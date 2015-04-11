@@ -2,9 +2,9 @@
 In Geek roots, "poly" means *many* like polygon, and "morph" means *forms* or the way something behaves. 
 In programming, polymorphism is the ability to change the behavior of an object as if it was another object. 
 
-For example, adding a complex number ```C = a + bi``` and a real number ```R``` result in a complex number ```(a+R) + bi```. Here, the real number ```R``` can behave as if it was a complex number ```R + 0i```.
+For example, adding a complex number ```C = a + bi``` and a real number ```R``` result in a complex number ```(a+R) + bi```. Here, the real number ```R``` can behave as if it was a complex number ```R + 0i```, making the addition looks like that of two complex numbers.
 
-In Java, Polymorphism enables you to process objects that share the same superclass (either directly or indirectly) as if they’re all objects of the superclass.
+In Java, Polymorphism enables you to process objects that share the same superclass (either directly or indirectly) as if they’re all objects of the superclass. 
 Subclasses of the superclass can define their own unique behaviors and yet share some of the same functionality of the superclass.
 
 To demonstrate polymorphic features in the Java language, let us create an ```Animal``` class having a ```talk``` method and extend it with a ```Cat``` and a ```Dog``` class. For ```Animal```, the talk method simply throws an exception, which indicates the method has not yet implemented. For ```Cat```, override the ```talk``` method to return ```"Meow!"```. For ```Dog```, override the method to return ```Woof!```.
@@ -143,7 +143,7 @@ For those new to the OOP concept, practical experience is more useful than the m
 
 ## A complete example
 Suppose we create a program that calculates the interest rates of several types of bank accounts. Classes CheckingAccount and SavingAccount represent the types of accounts. Each class extends superclass BankAccount, which contains general methods such as deposit, withdraw and apply interest rate at the end of month. Each subclass implements its own version of the method ```ApplyInterestRate```. Our program maintains an array containing references to objects of various BankAccount subclasses. 
-At the end of month, the program traverse the array and tell the object to apply interest rate. To each object, the instruction is the same: apply interest rate. But how the tasks are carried out varies depending on the class of the object. This programming paradigm is called polymorphism. 
+At the end of month, the program traverse the array and tell the object to apply interest rate. To each object, the instruction is the same: apply interest rate. But how the tasks are carried out varies depending on the class of the object. This programming paradigm is called polymorphism.   
 TODO: 
 ```java
 //AccounTest.java
