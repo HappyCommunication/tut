@@ -86,7 +86,7 @@ error: Fish is not abstract and does not override abstract method talk() in Anim
 class Fish extends Animal {
 ```
 
-## Inteface
+## Interface
 There are a number of situation where it is important to have a group of classes exhibit a common behavior. For example, we want a ```Radio``` class to have the ```talk``` method as the ```Cat``` class has. Surely, a ```Radio``` should not be classified as an ```Animal```, but simply could be called via a ```talk``` interface.
 
 In Java, an ```interface``` type is similar to an abstract class. In particular, acting as a template, it could not do anything.  
@@ -124,6 +124,11 @@ public class TalkInterfaceTest {
         }
     }
 }
+```
+The above code produce
+```
+Things[0]: Meow!
+Things[1]: This is the Voice of America!
 ```
 
 ## A complete example
