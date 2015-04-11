@@ -29,11 +29,11 @@ public class BankAccount {
     }    
 
     public void withdraw(float amount) {
-        if (balance >= withdraw) {
+        if (balance >= amount) {
             balance = balance - amount;
-            System.out.println(firstName + " " + lastName + " withdrew $" + withdraw + ". Current Balance $" + balance);
+            System.out.println(firstName + " " + lastName + " withdrew $" + amount + ". Current Balance $" + balance);
         }
-        if (balance < withdraw) {
+        if (balance < amount) {
             System.out.println("Unable to withdraw " + amount + " for " + firstName + " " + lastName + " due to insufficient funds.");
         }
     }
