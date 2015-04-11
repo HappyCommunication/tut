@@ -44,19 +44,47 @@ public class AnimalTest {
         pets[1] = new Dog();
         pets[2] = new Animal();
         for (int i = 0; i < pets.length; i++) {
-            System.out.println(pets[i].talk());
+            System.out.println("Pet[" + i + "]: " + pets[i].talk());
         }
     }
 }
 ```
 The above code produce
 ```
-Meow!
-Woof!
-Exception 
+Pet[0]: Meow!
+Pet[1]: Woof!
+Exception in thread "main" java.lang.UnsupportedOperationException: Animal has not implement talk
+	at Animal.talk(AnimalTest.java:11)
+	at AnimalTest.main(AnimalTest.java:35)
 ```
+The ```talk``` method of Pet[2] is of Animal class. The method intentionally thows an exception as it is not implemented.
 
 ## Abstract class
+Sometimes, we want a superclass to just act as general template. Based on the template, an object of the superclass becomes a type to exploit the polymorphic feature of Java language similar to the array of Animal mentioned above.  
+However, we have no intention to allow an Animal in general to talk, thus the program thows an exception when the method is called. All this happen at run time, so we must run our program and hope to discover the mistake as soon as possible.  
+There is a better way, though. By stating that ```Animal``` is an abstract class, there will be no object of such class, thus no call to the should-not-exist ```talk``` method.
+```java
+abstract class Animal {
+    abstract String talk();
+}
+```
+Replace the new Animal class, the compile compain that creating an object of abstract Animal class is not acceptable. 
+```
+error: Animal is abstract; cannot be instantiated
+        pets[2] = new Animal();
+```
+Furthermore, extending an abstract class without implementing the abstract method is a compile-time error
+```java
+class Fish extends Animal {
+    
+}
+```
+
+The error looks like
+```
+error: Fish is not abstract and does not override abstract method talk() in Animal
+class Fish extends Animal {
+```
 
 ## A complete example
 Suppose we create a program that calculates the interest rates of several types of bank accounts. Classes CheckingAccount and SavingAccount represent the types of accounts. Each class extends superclass BankAccount, which contains general methods such as deposit, withdraw and apply interest rate at the end of month. Each subclass implements its own version of the method ```ApplyInterestRate```. Our program maintains an array containing references to objects of various BankAccount subclasses. 
