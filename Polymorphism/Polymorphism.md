@@ -125,11 +125,16 @@ public class TalkInterfaceTest {
     }
 }
 ```
-The above code produce
+In the above code, the ```Talk``` interface is used as a refernece type for ```things```, which can invoke only methods specified in the interface.  
+Try it, you will see the following output
 ```
 Things[0]: Meow!
 Things[1]: This is the Voice of America!
 ```
+
+At this point, you may be asking "What is the difference between ```abstract``` and ```interface```"?
+In practice, ```interface``` are used quite often but ```abstract``` is not. A lot of objects has the same interface, but only a small number of them are organized into a hierarchy. The reason to favor which one is out of scope of this article.
+For those new to the OOP concept, practical experience is more desirable than delving into the minute differences between ```abstract``` and ```interface```.
 
 ## A complete example
 Suppose we create a program that calculates the interest rates of several types of bank accounts. Classes CheckingAccount and SavingAccount represent the types of accounts. Each class extends superclass BankAccount, which contains general methods such as deposit, withdraw and apply interest rate at the end of month. Each subclass implements its own version of the method ```ApplyInterestRate```. Our program maintains an array containing references to objects of various BankAccount subclasses. 
