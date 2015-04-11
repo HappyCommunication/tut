@@ -27,7 +27,7 @@ class Dog extends Animal {
 }
 ```
 
-As Cat is a subclass of Animal, Java allows an object of type Animal to point to an object of type Cat.
+As ```Cat``` is a subclass of ```Animal```, Java allows an object of type Animal to point to an object of type ```Cat```.
 Hence, it is possible to write:
 ```java
 Animal c = new Cat();
@@ -57,23 +57,23 @@ Exception in thread "main" java.lang.UnsupportedOperationException: Animal has n
 	at Animal.talk(AnimalTest.java:11)
 	at AnimalTest.main(AnimalTest.java:35)
 ```
-The ```talk``` method of Pet[2] is of Animal class. The method intentionally thows an exception as it is not implemented.
+The ```talk``` method of ```Pet[2]``` is of ```Animal``` class. The method intentionally thows an exception as it is not implemented.
 
 ## Abstract class
-Sometimes, we want a superclass to just act as general template. Based on the template, an object of the superclass becomes a type to exploit the polymorphic feature of Java language similar to the array of Animal mentioned above.  
+Sometimes, we want a superclass to just act as general template. Based on the template, an object of the superclass becomes a type to exploit the polymorphic feature of Java language similar to the array of ```Animal``` mentioned above.  
 However, we have no intention to allow an Animal in general to talk, thus the program thows an exception when the method is called. All this happen at run time, so we must run our program and hope to discover the mistake as soon as possible.  
-There is a better way, though. By stating that ```Animal``` is an abstract class, there will be no object of such class, thus no call to the should-not-exist ```talk``` method.
+There is a better way, though. By stating that ```Animal``` is an ```abstract``` class, there will be no object of such class, thus no call to the should-not-exist ```talk``` method.
 ```java
 abstract class Animal {
     abstract String talk();
 }
 ```
-Replace the new Animal class, the compile compain that creating an object of abstract Animal class is not acceptable. 
+Replace the new ```Animal``` class, the compile compain that creating an object of abstract ```Animal``` class is not acceptable. 
 ```
 error: Animal is abstract; cannot be instantiated
         pets[2] = new Animal();
 ```
-Furthermore, extending an abstract class without implementing the abstract method is a compile-time error
+Furthermore, extending an ```abstract``` class without implementing the ```abstract``` method is a compile-time error
 ```java
 class Fish extends Animal {
     
@@ -84,6 +84,46 @@ The error looks like
 ```
 error: Fish is not abstract and does not override abstract method talk() in Animal
 class Fish extends Animal {
+```
+
+## Inteface
+There are a number of situation where it is important to have a group of classes exhibit a common behavior. For example, we want a ```Radio``` class to have the ```talk``` method as the ```Cat``` class has. Surely, a ```Radio``` should not be classified as an ```Animal```, but simply could be called via a ```talk``` interface.
+
+In Java, an ```interface``` type is similar to an abstract class. In particular, acting as a template, it could not do anything.  
+Here is an example.
+```java
+// File TalkInterfaceTest.java
+import java.io.*; // header stuff MUST go above the first class
+
+interface Talk {
+	String talk();
+}
+
+class Cat implements Talk {
+    public String talk() {
+        return "Meow!";
+    }
+}
+
+class Radio implements Talk {
+    public String talk() {
+        return "This is the Voice of America!";
+    }
+}
+
+public class TalkInterfaceTest {
+
+    public static void main(String[] args) {
+        Talk[] things = new Talk[2];
+      	Cat c = new Cat();
+      	Radio r = new Radio();
+        things[0] = c;
+        things[1] = r;
+        for (int i = 0; i < things.length; i++) {
+            System.out.println("Things[" + i + "]: " + things[i].talk());
+        }
+    }
+}
 ```
 
 ## A complete example
