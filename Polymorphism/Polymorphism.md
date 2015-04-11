@@ -68,12 +68,13 @@ abstract class Animal {
     abstract String talk();
 }
 ```
-Replace the new ```Animal``` class, the compile compain that creating an object of abstract ```Animal``` class is not acceptable. 
+Using the new ```Animal``` class, the compiler compains about creating an object of abstract ```Animal``` class.
 ```
 error: Animal is abstract; cannot be instantiated
         pets[2] = new Animal();
 ```
-Furthermore, extending an ```abstract``` class without implementing the ```abstract``` method is a compile-time error
+Furthermore, extending an ```abstract``` class without implementing the ```abstract``` method results a compile-time error. 
+For example, we create a non-abstract Fish class using Animal as its superclass but forget to implement the ```talk``` method.
 ```java
 class Fish extends Animal {
     
@@ -87,9 +88,10 @@ class Fish extends Animal {
 ```
 
 ## Interface
-There are a number of situation where it is important to have a group of classes exhibit a common behavior. For example, we want a ```Radio``` class to have the ```talk``` method as the ```Cat``` class has. Surely, a ```Radio``` should not be classified as an ```Animal```, but simply could be called via a ```talk``` interface.
+There are a number of situation where it is important to have a group of classes to exhibit a common behavior. For example, we want a ```Radio``` class to have the ```talk``` method as the ```Cat``` class has. Surely, a ```Radio``` should not be classified as an ```Animal```, yet need to be called via a ```talk``` interface.
 
-In Java, an ```interface``` type is similar to an abstract class. In particular, acting as a template, it could not do anything.  
+In Java, an ```interface``` type is similar to an abstract class. Specifically, acting as a template, it could not do anything. The ```implements``` keyword is used to state that the following class implements all the methods specfied in the interface.
+
 Here is an example.
 ```java
 // File TalkInterfaceTest.java
@@ -125,16 +127,16 @@ public class TalkInterfaceTest {
     }
 }
 ```
-In the above code, the ```Talk``` interface is used as a refernece type for ```things```, which can invoke only methods specified in the interface.  
+In the above code, the ```Talk``` interface is used as to references objects in the ```things``` array. Such objects can invoke only methods specified in the interface.  
 Try it, you will see the following output
 ```
 Things[0]: Meow!
 Things[1]: This is the Voice of America!
 ```
 
-At this point, you may be asking "What is the difference between ```abstract``` and ```interface```"?
-In practice, ```interface``` are used quite often but ```abstract``` is not. A lot of objects has the same interface, but only a small number of them are organized into a hierarchy. The reason to favor which one is out of scope of this article.
-For those new to the OOP concept, practical experience is more desirable than delving into the minute differences between ```abstract``` and ```interface```.
+At this point, you may be asking "What is the difference between ```abstract``` and ```interface```"?  
+In practice, ```interface``` are used quite often but ```abstract``` is not. A lot of objects has the same interface, but only a small number of them are organized into a hierarchy. The reason to favor which one is out of scope of this article.   
+For those new to the OOP concept, practical experience is more useful than the minute differences in concept between ```abstract``` and ```interface```.
 
 ## A complete example
 Suppose we create a program that calculates the interest rates of several types of bank accounts. Classes CheckingAccount and SavingAccount represent the types of accounts. Each class extends superclass BankAccount, which contains general methods such as deposit, withdraw and apply interest rate at the end of month. Each subclass implements its own version of the method ```ApplyInterestRate```. Our program maintains an array containing references to objects of various BankAccount subclasses. 
